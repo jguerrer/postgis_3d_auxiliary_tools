@@ -89,11 +89,12 @@ BEGIN
 	
 	norm= sqrt(nx*nx + ny*ny + nz*nz);
 	-- result is returned as a row
-	RAISE NOTICE '#nx %', nx;--
-	RAISE NOTICE '#ny %', ny;--
-	RAISE NOTICE '#nz %', nz;--
+	--RAISE NOTICE '#nx %', nx;--
+	--RAISE NOTICE '#ny %', ny;--
+	--RAISE NOTICE '#nz %', nz;--
 
-	SELECT ARRAY[(nx/norm)::double precision,  (ny/norm)::double precision,   (nz/norm)::double precision] INTO results;
+	--SELECT ARRAY[(nx/norm)::double precision,  (ny/norm)::double precision,   (nz/norm)::double precision] INTO results;
+	results=ARRAY[(nx/norm)::double precision,  (ny/norm)::double precision,   (nz/norm)::double precision];-- INTO results;
 	return results;
 END;
 --no viene nada despues del end

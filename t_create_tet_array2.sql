@@ -1,5 +1,5 @@
-drop function t_createTet_array;
-CREATE OR REPLACE FUNCTION t_createTet_array(v1 double precision[] , v2 double precision[] , v3 double precision[] , dplus double precision, dminus double precision) 
+--drop function t_createTet_array_simple;
+CREATE OR REPLACE FUNCTION t_createTet_array_simple(v1 double precision[] , v2 double precision[] , v3 double precision[] , dplus double precision, dminus double precision) 
 RETURNS table(tet_id text, v_1 double precision[],v_2 double precision[],v_3 double precision[], v_4 double precision[]) AS $$
 
 << mainCreateTet >>
@@ -119,11 +119,22 @@ BEGIN
 	--once tetrahedrals are defined, they are returned as a set of records
 	--there are six tetrahedrals.
 	
-	return query SELECT 'tet1' tet_id , v1 v_1, v2 v_2, v3 v_3, v4 v_4 
+	return query 
+--	SELECT 'tet1' tet_id , v1 v_1, v2 v_2, v3 v_3, v4 v_4 
+--	UNION ALL
+--	SELECT 'tet2' tet_id , v4 v_1, v5 v_2, v6 v_3, v2 v_4
+--	UNION ALL
+--	SELECT 'tet3' tet_id , v3 v_1, v4 v_2, v6 v_3, v2 v_4 
+	SELECT 'tet1' tet_id , v7 v_1, v8 v_2, v9 v_3, v4 v_4 
 	UNION ALL
-	SELECT 'tet2' tet_id , v4 v_1, v5 v_2, v6 v_3, v2 v_4
+	SELECT 'tet2' tet_id , v4 v_1, v5 v_2, v6 v_3, v8 v_4
 	UNION ALL
-	SELECT 'tet3' tet_id , v3 v_1, v4 v_2, v6 v_3, v2 v_4 
+	SELECT 'tet3' tet_id , v9 v_1, v4 v_2, v6 v_3, v8 v_4 
+	
+	
+	
+	;
+	/*
 	UNION ALL
 	SELECT 'tet4' tet_id , v1 v_1, v2 v_2, v3 v_3, v7 v_4 
 	UNION ALL
@@ -131,6 +142,8 @@ BEGIN
 	UNION ALL
 	SELECT 'tet6' tet_id , v8 v_1, v3 v_2, v2 v_3, v7 v_4 
 	;
+	*/
+	
 --	INTO results;
 
 	--raise notice '%',results;

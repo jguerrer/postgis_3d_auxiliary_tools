@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION 2_geom2Array(point geometry) RETURNS double precision[] AS $$
+CREATE OR REPLACE FUNCTION t_geom2Array(point geometry) RETURNS double precision[] AS $$
 
 << geom2array >>
 DECLARE
